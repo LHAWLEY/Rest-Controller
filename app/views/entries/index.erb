@@ -1,0 +1,23 @@
+<h1>Upcoming Karaoke Artists</h1>
+
+<main role="main">
+  <ul class="entries">
+    <% @entries.each do |entry| %>
+    <li class="entry">
+      <span class="singer"><%= entry.singer %></span>
+      <span class="song-title"><%= entry.song_title %></span>
+
+      <ul class="entry-links">
+        <li class="entry-link"><a href="<%= "entries/#{entry.id}" %>">details</a></li>
+        <li class="entry-link"><a href="<%= "entries/#{entry.id}/edit" %>">edit</a></li>
+        <li class="entry-link">
+          <form method="post" action="<%= "/entries/#{entry.id}" %>">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="delete" class="delete_button">
+          </form>
+        </li>
+      </ul>
+    </li>
+    <% end %>
+  </ul>
+</main>
